@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.delegate = self
         table.dataSource = self
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,13 +41,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            data.remove(at: indexPath.row)
+            self.data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+
+       }
     }
     
+    //func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+   
+    //  let delete = UIContextualAction(style: .destructive, title: "delete")
+    //  { (contextualAction, view, actionPerformed: (Bool) -> ()) in
+    //      self.data.remove(at: indexPath.row)
+    //      tableView.deleteRows(at: [indexPath], with: .automatic)
+    //      actionPerformed(true)
+    //      tableView.reloadData()
+    //  }
+    //      return UISwipeActionsConfiguration (actions: [delete])
+    //   }
+    
+
     
     //タスク見える画面開くそして削除するw
     
